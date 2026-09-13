@@ -14,46 +14,57 @@ import java.util.List;
 @RequestMapping("/api/products")
 public class ProductController {
 
-    final private ProductService productService;
+    private final ProductService productService;
 
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
     @PostMapping
-    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody @Valid ProductRequestDTO requestDTO)
-    {
-        ProductResponseDTO productResponseDTO= productService.createProduct(requestDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(productResponseDTO);
+    public ResponseEntity<ProductResponseDTO> createProduct(
+            @RequestBody @Valid ProductRequestDTO requestDTO) {
 
+        ProductResponseDTO productResponseDTO =
+                productService.createProduct(requestDTO);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(productResponseDTO);
     }
-    @GetMapping
-    public ResponseEntity<List<ProductResponseDTO>> getAllProducts()
-    {
-        List<ProductResponseDTO> productResponseDTOList= productService.getAllProducts();
-        return  ResponseEntity.ok(productResponseDTOList);
-    }
+
     @GetMapping("/{id}")
-    public ResponseEntity<ProductResponseDTO> getProductById(@PathVariable Long id)
-    {
-        ProductResponseDTO productResponseDTO= productService.getProductById(id);
-         return  ResponseEntity.ok(productResponseDTO);
-       }
+    public ResponseEntity<ProductResponseDTO> getProductById(
+            @PathVariable Long id) {
 
-       @PutMapping("/{id}")
+        ProductResponseDTO productResponseDTO =
+                productService.getProductById(id);
+
+        return ResponseEntity.ok(productResponseDTO);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ProductResponseDTO>> getAllProducts() {
+
+        return ResponseEntity.ok(productService.getAllProducts());
+    }
+
+    @PutMapping("/{id}")
     public ResponseEntity<ProductResponseDTO> updateProduct(
-            @PathVariable Long id, @RequestBody @Valid ProductRequestDTO productRequestDTO)
-       {
-         ProductResponseDTO productResponseDTO=  productService.updateProduct(id, productRequestDTO);
-           return ResponseEntity.ok(productResponseDTO);
+            @PathVariable Long id,
+            @RequestBody @Valid ProductRequestDTO productRequestDTO) {
 
-       }
+        ProductResponseDTO productResponseDTO =
+                productService.updateProduct(id, productRequestDTO);
 
-       @DeleteMapping("/{id}")
-       public ResponseEntity<Void> deleteProductById(@PathVariable Long id)
-       {
-             productService.deleteProductById(id);
-             return  ResponseEntity.noContent().build();
-       }
+        return ResponseEntity.ok(productResponseDTO);
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProductById(
+            @PathVariable Long id) {
+
+        productService.deleteProductById(id);
+
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -35,6 +35,7 @@
         <module>config-server</module>
         <module>product-service</module>
         <module>category-service</module>
+        <module>api-gateway</module>
     </modules>
 
 </project>

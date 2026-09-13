@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: api-gateway
+
+  config:
+    import: optional:configserver:http://localhost:8888
+
+management:
+  endpoint:
+    gateway:
+      access: read-only
+
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway

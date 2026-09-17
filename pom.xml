@@ -36,6 +36,7 @@
         <module>product-service</module>
         <module>category-service</module>
         <module>api-gateway</module>
+        <module>discovery-server</module>
     </modules>
 
 </project>

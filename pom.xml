@@ -37,6 +37,7 @@
         <module>category-service</module>
         <module>api-gateway</module>
         <module>discovery-server</module>
+        <module>auth-service</module>
     </modules>
 
 </project>

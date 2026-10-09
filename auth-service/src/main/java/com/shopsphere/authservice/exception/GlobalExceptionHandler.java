@@ -41,4 +41,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(usernameAlreadyExistsException.getMessage());
     }
+
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<String> handleBanCredentailsException(InvalidCredentialsException invalidCredentialsException)
+    {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(invalidCredentialsException.getMessage());
+    }
 }

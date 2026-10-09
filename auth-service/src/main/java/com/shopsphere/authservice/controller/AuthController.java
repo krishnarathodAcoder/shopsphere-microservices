@@ -1,5 +1,7 @@
 package com.shopsphere.authservice.controller;
 
+import com.shopsphere.authservice.dto.AuthResponseDTO;
+import com.shopsphere.authservice.dto.LoginRequestDTO;
 import com.shopsphere.authservice.dto.RegisterRequestDTO;
 import com.shopsphere.authservice.dto.RegisterResponseDTO;
 import com.shopsphere.authservice.service.AuthService;
@@ -28,5 +30,12 @@ public class AuthController {
        RegisterResponseDTO registerResponseDTO=  authService.registerUser(registerRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(registerResponseDTO);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponseDTO> login(@Valid @RequestBody LoginRequestDTO loginRequestDTO)
+    {
+        AuthResponseDTO  authResponseDTO = authService.loginUser(loginRequestDTO);
+        return ResponseEntity.ok(authResponseDTO);
     }
 }

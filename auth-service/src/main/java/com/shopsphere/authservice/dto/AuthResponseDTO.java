@@ -1,68 +1,46 @@
+
 package com.shopsphere.authservice.dto;
 
 public class AuthResponseDTO {
 
-    private String token;
-    private String tokenType;
     private Long userId;
-    private String userName;
+    private String username;
     private String role;
 
     public AuthResponseDTO() {
-
-
     }
 
-    public AuthResponseDTO(String token,
-                           String tokenType,
-                           Long Id,
-                           String userName,
-                           String role) {
-        this.role = role;
-        this.token = token;
-        this.tokenType = tokenType;
-        this.userId = Id;
-        this.userName = userName;
-    }
+    public AuthResponseDTO(
+            Long userId,
+            String username,
+            String role) {
 
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setRole(String role) {
+        this.userId = userId;
+        this.username = username;
         this.role = role;
     }
 
-    public String getRole() {
-        return role;
+    public Long getUserId() {
+        return userId;
     }
 
     public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public Long getUserId()
-    {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public String getTokenType() {
-        return tokenType;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setTokenType(String tokenType) {
-        this.tokenType = tokenType;
+    public String getRole() {
+        return role;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

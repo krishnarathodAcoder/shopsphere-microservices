@@ -1,27 +1,24 @@
 package com.shopsphere.authservice.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 public class LoginRequestDTO {
 
+    @NotBlank(message = "Username is required")
+    private String username;
 
-    @NotBlank(message = "username is required")
-    private String userName;
-
-    @NotBlank(message = "Password is required ")
+    @NotBlank(message = "Password is required")
     private String password;
 
     public LoginRequestDTO() {
-
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
